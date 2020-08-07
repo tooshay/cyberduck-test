@@ -6,29 +6,31 @@
 
 @section('content')
     @isset($companies)
-        <table>
-            <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>Name</td>
-                    <td>Email</td>
-                    <td>URL</td>
-                    <td colspan = 2>Actions</td>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($companies as $company)
-                    <tr>
-                        <td>{{ $company->id }}</td>
-                        <td>{{ $company->name }}</td>
-                        <td>{{ $company->email }}</td>
-                        <td>{{ $company->url }}</td>
-                        <td><a href="{{ route('company.edit', ['id' => $company->id]) }}">update</a></td>
-                        <td><a href="{{ route('company.destroy', ['id' => $company->id]) }}">delete</a></td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="box">
+            <div class="box-body no-padding">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Name</td>
+                            <td>Email</td>
+                            <td colspan = 2>&nbsp;</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($companies as $company)
+                            <tr>
+                                <td>{{ $company->id }}</td>
+                                <td><a href="{{ $company->url }}">{{ $company->name }}</a></td>
+                                <td>{{ $company->email }}</td>
+                                <td><a href="{{ route('companies.edit', ['company' => $company]) }}">update</a></td>
+                                <td><a href="{{ route('companies.destroy', ['company' => $company]) }}">delete</a></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     @endisset
 @stop
 

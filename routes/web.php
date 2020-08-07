@@ -15,8 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/companies', ['App\Http\Controllers\CompanyController', 'index'])->name('companies.index');
-Route::get('/companies/{id}', ['App\Http\Controllers\CompanyController', 'edit'])->name('company.edit');
-Route::delete('/companies/{id}', ['App\Http\Controllers\CompanyController', 'destroy'])->name('company.destroy');
+Route::resources([
+    'companies' => 'CompanyController',
+    'employees' => 'EmployeeController',
+]);

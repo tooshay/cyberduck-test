@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Http\Requests\CompanyStoreRequest;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -16,12 +17,14 @@ class CompanyController extends Controller
 
     public function create()
     {
-
+        return view('companies.create');
     }
 
-    public function store(Request $request)
+    public function store(CompanyStoreRequest $storeRequest)
     {
+        Company::create($storeRequest->validated());
 
+        return redirect()->route('companies.index');
     }
 
     public function show($id)
@@ -29,10 +32,8 @@ class CompanyController extends Controller
 
     }
 
-    public function edit($id)
+    public function edit(Company $company)
     {
-        $company = Company::findOrFail($id);
-
         return view('companies.edit', compact('company'));
     }
 
