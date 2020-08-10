@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
  * @property string  $name
  * @property string  $email
  * @property string  $url
+ * @property string  $logo
  * @property Carbon  $created_at
  * @property Carbon  $updated_at
  * @property Collection<Employee> $employees
@@ -24,7 +25,8 @@ class Company extends Model
     protected $fillable = [
         'name',
         'email',
-        'url'
+        'url',
+        'logo'
     ];
 
     public function employees(): HasMany
