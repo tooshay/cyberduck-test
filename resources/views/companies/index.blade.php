@@ -20,7 +20,7 @@
                             <td>Name</td>
                             <td>Website</td>
                             <td>Email</td>
-                            <td colspan = 2>&nbsp;</td>
+                            <td colspan="2">&nbsp;</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +41,9 @@
                             </tr>
                         @endforeach
                     </tbody>
+                    <tr>
+                        <td colspan="6">{{ $companies->links() }}</td>
+                    </tr>
                 </table>
             </div>
         </div>

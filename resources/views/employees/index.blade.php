@@ -21,7 +21,7 @@
                             <td>Email</td>
                             <td>Phone</td>
                             <td>Company</td>
-                            <td colspan = 2>&nbsp;</td>
+                            <td colspan=2>&nbsp;</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,6 +43,9 @@
                             </tr>
                         @endforeach
                     </tbody>
+                    <tr>
+                        <td colspan="7">{{ $employees->links() }}</td>
+                    </tr>
                 </table>
             </div>
         </div>

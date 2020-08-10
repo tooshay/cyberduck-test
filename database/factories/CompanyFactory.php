@@ -8,6 +8,7 @@ $factory->define(\App\Company::class, function (Faker $faker) {
     return [
         'email' => $faker->companyEmail,
         'name' => $faker->company,
+        'logo' => null,
         'url' => $faker->url
     ];
 });
