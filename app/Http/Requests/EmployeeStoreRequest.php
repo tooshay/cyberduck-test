@@ -13,7 +13,7 @@ class EmployeeStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,6 +26,7 @@ class EmployeeStoreRequest extends FormRequest
         return [
             'first_name' => 'required',
             'last_name' => 'required',
+            'email' => 'email',
             'company_id' => 'exists:App\Company,id',
         ];
     }
