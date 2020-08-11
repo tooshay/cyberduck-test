@@ -2,11 +2,11 @@
 /public/hot
 /public/storage
 /storage/*.key
+.idea/workspace.xml
+.idea/php.xml
+.idea/tracked.iml
+.idea/phpunit.xml
 /vendor
 .env
 .env.backup
 .phpunit.result.cache
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
