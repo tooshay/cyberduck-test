@@ -20,8 +20,7 @@ it('shows a company to the user', function () {
     actingAs($user)
         ->get('/companies/' . $company->id)
         ->assertSee($company->name)
-        ->assertSee($company->email)
-        ->assertSee($company->phone);
+        ->assertSee($company->url);
 });
 
 it('allows an authenticated user to create a company', function () {
@@ -37,16 +36,14 @@ it('allows an authenticated user to create a company', function () {
 it('allows an authenticated user to update a company', function () {
     $user = factory(User::class)->create();
     $company = factory(Company::class)->create();
-    $company->first_name = 'John';
-    $company->last_name = 'Birion';
+    $company->name = 'New company';
 
     actingAs($user)
         ->put('/companies/' . $company->id, $company->toArray());
 
     $this->assertDatabaseHas('companies', [
             'id' => $company->id,
-            'first_name' => 'John',
-            'last_name' => 'Birion'
+            'name' => 'New company'
         ]);
 });
 
@@ -58,22 +55,13 @@ it('doesn\'t allow a non-authed user to update a company', function () {
         ->assertRedirect('/login');
 });
 
-it('requires a user to input a first name when creating a company', function () {
+it('requires a user to input a name when creating a company', function () {
     $user = factory(User::class)->create();
-    $company = factory(Company::class)->make(['first_name' => null]);
+    $company = factory(Company::class)->make(['name' => null]);
 
     actingAs($user)
         ->post('/companies', $company->toArray())
-        ->assertSessionHasErrors('first_name');
-});
-
-it('requires a user to input a last name when creating a company', function () {
-    $user = factory(User::class)->create();
-    $company = factory(Company::class)->make(['last_name' => null]);
-
-    actingAs($user)
-        ->post('/companies', $company->toArray())
-        ->assertSessionHasErrors('last_name');
+        ->assertSessionHasErrors('name');
 });
 
 it('requires a user to input a valid email when creating a company', function () {

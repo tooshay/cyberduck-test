@@ -11,7 +11,7 @@ class CompanyController extends Controller
 {
     public function index(): View
     {
-        $companies =  Company::paginate(10);;
+        $companies =  Company::paginate(10);
 
         return view('companies.index', compact('companies'));
     }
