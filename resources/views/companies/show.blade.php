@@ -3,7 +3,7 @@
 @section('content_header')
     @if (isset($company->logo))
         <div>
-            <img src='{{ URL::to('storage/app/'. $company->logo) }}'>
+            <img src='{{ Storage::url("{$company->logo}") }}'>
         </div>
     @endif
     <div>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-group">
                     <strong>Website</strong>
-                    <a href="{{$company->url}}">{{ $company->url }}</a>
+                    <a href="{{$company->url}}" target="_blank">{{ $company->url }}</a>
                 </div>
             </div>
         </div>

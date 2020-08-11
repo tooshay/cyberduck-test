@@ -11,7 +11,7 @@ class CompanyController extends Controller
 {
     public function index(): View
     {
-        $companies =  Company::paginate(15);;
+        $companies =  Company::paginate(10);;
 
         return view('companies.index', compact('companies'));
     }
@@ -44,7 +44,7 @@ class CompanyController extends Controller
         $data = $storeRequest->validated();
 
         if ($file = $storeRequest->file('logo')) {
-            $data['logo'] = $file->store('logos');
+            $data['logo'] = $file->store('public');
         }
 
         $company->update($data);
