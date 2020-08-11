@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /storage/*.key
+.idea/companies.iml
 .idea/workspace.xml
 .idea/php.xml
 .idea/tracked.iml
