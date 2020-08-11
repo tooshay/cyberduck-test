@@ -7,6 +7,7 @@
 .idea/php.xml
 .idea/tracked.iml
 .idea/phpunit.xml
+/.idea
 /vendor
 .env
 .env.backup
