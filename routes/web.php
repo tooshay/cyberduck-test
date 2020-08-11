@@ -15,9 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
 
-Route::get('/', 'CompanyController@index')->name('home');
+//Route::resources([
+//    'companies' => 'CompanyController',
+//    'employees' => 'EmployeeController',
+//]);
 
-Route::resources([
-    'companies' => 'CompanyController',
-    'employees' => 'EmployeeController',
-]);
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::get('/', 'CompanyController@index')->name('home');
+
+    Route::resource('companies', 'CompanyController');
+    Route::resource('employees', 'EmployeeController');
+});

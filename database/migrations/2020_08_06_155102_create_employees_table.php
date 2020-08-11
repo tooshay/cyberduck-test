@@ -33,9 +33,11 @@ class CreateEmployeesTable extends Migration
      */
     public function down()
     {
-        Schema::table('user_children', function (Blueprint $table) {
-            $table->dropForeign(['company_id']);
-        });
+        if (DB::getDriverName() !== 'sqlite') {
+            Schema::table('user_children', function (Blueprint $table) {
+                $table->dropForeign(['company_id']);
+            });
+        }
 
         Schema::dropIfExists('employees');
     }

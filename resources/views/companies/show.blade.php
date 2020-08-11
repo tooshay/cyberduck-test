@@ -1,31 +1,36 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1>{{ $company->name }}</h1>
+    @if (isset($company->logo))
+        <div>
+            <img src='{{ URL::to('storage/app/'. $company->logo) }}'>
+        </div>
+    @endif
+    <div>
+        <h1>{{ $company->name }}</h1>
+    </div>
 @stop
 
 @section('content')
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email</strong>
-                {{ $company->email }}
+    <div class="content">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Email</strong>
+                    <a href="mailto:{{$company->email}}">{{ $company->email }}</a>
+                </div>
+                <div class="form-group">
+                    <strong>Website</strong>
+                    <a href="{{$company->url}}">{{ $company->url }}</a>
+                </div>
             </div>
-            <div class="form-group">
-                <strong>Website</strong>
-                {{ $company->url }}
-            </div>
-            <div class="form-group">
-                <strong>Website</strong>
-                {{ $company->url }}
-            </div>
-            <img src='{{ URL::to('storage/app/'. $company->logo) }}'>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('companies.index') }}">Back</a>
+        <div class="row">
+            <div class="row">
+                <div class="col-lg-12 margin-tb">
+                    <a class="btn btn-primary pull-right" href="{{ route('companies.index') }}">Back</a>
+                    <a class="btn btn-primary pull-left" href="{{ route('companies.edit', $company) }}">Edit</a>
+                </div>
             </div>
         </div>
     </div>

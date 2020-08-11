@@ -16,7 +16,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <td>ID</td>
                             <td>Name</td>
                             <td>Website</td>
                             <td>Email</td>
@@ -26,7 +25,6 @@
                     <tbody>
                         @foreach($companies as $company)
                             <tr>
-                                <td>{{ $company->id }}</td>
                                 <td><a href="{{ route('companies.show', $company) }}">{{ $company->name }}</a></td>
                                 <td>{{ $company->url }}</td>
                                 <td>{{ $company->email }}</td>

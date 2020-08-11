@@ -16,7 +16,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <td>ID</td>
                             <td>Name</td>
                             <td>Email</td>
                             <td>Phone</td>
@@ -27,11 +26,10 @@
                     <tbody>
                         @foreach($employees as $employee)
                             <tr>
-                                <td>{{ $employee->id }}</td>
                                 <td><a href="{{ route('employees.show', $employee) }}">{{ $employee->name }}</a></td>
                                 <td>{{ $employee->email }}</td>
                                 <td>{{ $employee->phone }}</td>
-                                <td>{{ $employee->company->name }}</td>
+                                <td><a href="{{ route('companies.show', $employee->company) }}">{{ $employee->company->name }}</a></td>
                                 <td><a class="btn btn-primary" href="{{ route('employees.edit', ['employee' => $employee]) }}">edit</a></td>
                                 <td>
                                     <form action="{{ route('employees.destroy', ['employee' => $employee]) }}" method="POST">
